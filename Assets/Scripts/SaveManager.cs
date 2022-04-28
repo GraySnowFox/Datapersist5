@@ -35,7 +35,9 @@ public class SaveManager : MonoBehaviour
         {
             highPoints = points;
             Debug.Log("New High");
-            SaveScore();
+            
+            SceneManager.LoadScene(2);
+            
         }
     }
     
@@ -49,7 +51,7 @@ public class SaveManager : MonoBehaviour
     public void SaveScore()
     {
        HighScore topScore = new HighScore();
-        topScore.name = "John Doe";
+        topScore.name = kingName;
         topScore.score = highPoints;
 
         string json = JsonUtility.ToJson(topScore);
@@ -65,7 +67,7 @@ public class SaveManager : MonoBehaviour
         if(File.Exists(path))
         {
             string json = File.ReadAllText(path);
-            
+            Debug.Log(path);
             HighScore topScore = JsonUtility.FromJson<HighScore>(json);
             highPoints = topScore.score;
             kingName = topScore.name;

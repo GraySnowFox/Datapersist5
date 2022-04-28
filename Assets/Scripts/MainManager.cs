@@ -78,8 +78,9 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         SaveManager.Instance.PointCompare(m_Points);
+        if(m_Points < SaveManager.Instance.highPoints){
         SceneManager.LoadScene(1);
-        //SaveScore();
+        }
     }
 
     //
